@@ -1,0 +1,6 @@
+During execution, no difference is observed between practica_1_V1.cpp and practica_1_V2.cpp; the only difference is in the implementation. In version 1, several variables of type thread are declared, while in version 2, a vector is declared, reducing lines of code. This is an advantage when implementing many threads.
+
+The difference between concatenating with different separators (using + and <<) is that when using <<, you send separate instructions to the buffer for display, and they can be interleaved with other functions that execute in between the instructions (interrupting the execution). Meanwhile, when concatenating with +, you send it to the buffer as a single instruction.
+
+The thread that executes is blocked for "delay" milliseconds:
+this_thread::sleep_for(chrono::milliseconds(delay));
