@@ -1,0 +1,38 @@
+#*****************************************************************
+# File:   Makefile_p4
+# Author: PSCD-Unizar
+# Date:   noviembre 2020
+# Coms:   Ejecutar "make -f Makefile_p4" para compilar
+#         Ejecutar "make -f Makefile_p4 clean" para limpiar (borrar lo que genere)
+#*****************************************************************
+
+#---------------------------------------------------------
+# macros
+RM = /bin/rm -f  # para limpiar
+CC = g++         # compilador
+#---------------------------------------------------------
+#directorio y clase para monitores
+CRTPAR=controlParejas
+#---------------------------------------------------------
+# opciones compilación y enlazado ("linkado")
+CPPFLAGS = -std=c++11  # opciones compilación
+LDFLAGS  = -pthread  # opciones de "linkado"
+#---------------------------------------------------------
+# vars
+EJEC = practica_4
+all: ${EJEC}
+#---------------------------------------------------------
+# "linkar"
+${EJEC}: ${EJEC}.o ${CRTPAR}.o
+	${CC} ${EJEC}.o ${CRTPAR}.o -o ${EJEC} ${CPPFLAGS} ${LDFLAGS}
+#---------------------------------------------------------
+# compilar
+${EJEC}.o: ${EJEC}.cpp
+	${CC} -c ${EJEC}.cpp -o ${EJEC}.o ${CPPFLAGS}
+
+${CRTPAR}.o: ${CRTPAR}.hpp ${CRTPAR}.cpp
+	${CC} -c ${CRTPAR}.cpp -o ${CRTPAR}.o ${CPPFLAGS} 
+#---------------------------------------------------------
+# Cuidado con lo que se pone aquí, que se borra sin preguntar
+clean:
+	$(RM) ${CRTPAR}.o ${EJEC}.o ${EJEC}
