@@ -1,0 +1,2 @@
+mainp2_e1:main_p2_e1.cpp
+	g++ main_p2_e1.cpp -o main_p2_e1 -std=c++11 -pthread

@@ -1,0 +1,24 @@
+### Analysis of Exercise 1
+
+1. **Which part of the vector should each search process handle?**  
+   Each search process should handle 1/8 of the vector (number of elements / 8).
+
+2. **How can the coordinator notify the searchers that it has loaded the data, and how can the searchers wait until this occurs?**  
+   By using a `bool` variable `finished`, which is set to `true` when the coordinator process has finished loading all the data from the file "datos.txt" into the vector. The search processes wait until `bool finished = true`, which indicates that the coordinator has finished.
+
+3. **Since each searcher will work on a different portion of the vector (and, moreover, the data vector is only used for reading), there are no interference issues between them. However, how can we ensure that each searcher gets the number of occurrences of the value in a different portion?**  
+   By ensuring that each searcher works on the i-th portion of the vector (1/8 of the vector), where `i` is its process identifier. This way, no part of the vector is repeated, and no part is left unprocessed.
+
+4. **How does each searcher notify the coordinator that it has finished its work?**  
+   By setting the i-th component of a boolean vector to `true`, where `i` is the searcher process's identifier.
+
+5. **How does the coordinator wait for all the searchers to finish?**  
+   The coordinator waits until the last (eighth) component of the boolean vector is set to `true`, indicating that the last process has finished, meaning that all the searchers are done.
+
+---
+
+### Functioning Overview
+
+"Vector" is the initial integer vector, and with the indicated processes (p1, p2, p3, p4, p5, p6, p7, p8), we obtain a vector of partial results, in which each component stores the number of times the element we are searching for appears in the portion each process is assigned to analyze. Once the search processes finish, these partial results are summed to give the total number of times the element appears. To know when the search ends, we simply increment a global variable by 1 each time a process finishes its portion of the vector, and when the variable reaches 8, we stop.
+
+For the synchronization in Exercise 2, we need a boolean vector to indicate when the i-th process has finished, so the next process (i+1) can execute, allowing the variables `maxOccurrences`, `indMin`, and `indMax` to be updated.
