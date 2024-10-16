@@ -74,7 +74,7 @@ void Estudiante ( int nip, int D[ N_FIL ][ N_COL ], int resultados[], controlPar
 // ----------------------------------------------------
 // Pre : el vector nips[2] representa las sillas (máximo 2) que albergan, cada una de ellas, un nip de un estudiante de la pareja. El resto de variables contienen lo que su propio nombre indica.
 //       Los semáforos "bHayHueco" y "bNoHayHueco" indican el estado de las sillas con el contador "sillasOcupadas", mientras que "bContTerminados" se refiere a las parejas terminadas(y "parejasTerminadas" cuenta el número de parejas terminadas)
-// Post :  Abre el fichero "datos.txt" y vuelca en la matriz D todos los datos sobre los que van a trabajar los estudiantes. Después, llama al proceso Profesor y al proceso Estudiante para que hagan su trabajo y cuando terminan,
+// Post :  Abre el fichero "data_4.txt" y vuelca en la matriz D todos los datos sobre los que van a trabajar los estudiantes. Después, llama al proceso Profesor y al proceso Estudiante para que hagan su trabajo y cuando terminan,
 //         se da por finalizado el examen.
 
 int main () {
@@ -85,9 +85,9 @@ int main () {
     int nip = 0;
     int resultados[N_EST];
     
-    // cargar " datos.txt " en "D"
+    // cargar " data_4.txt " en "D"
     ifstream f;
-    f.open("datos.txt");
+    f.open("data_4.txt");
     if (f.is_open()) {
 
         for(int i = 0; i < N_FIL; i++){

@@ -56,7 +56,7 @@ void search(const int v[],const int i, const int d, const int value, int& result
 
 //-----------------------------------------------------
 //Pre: 
-//Post: 1. Carga los datos del vector desde el fichero “datos.txt” que se suministra 
+//Post: 1. Carga los datos del vector desde el fichero “data_2.txt” que se suministra 
 //                  con el material adicional de la práctica
 //      2. “Avisa” a los procesos buscadores de que los datos están cargados
 //      3. Espera a que cada proceso buscador termine su trabajo y le “avise” de ello
@@ -66,7 +66,7 @@ void search(const int v[],const int i, const int d, const int value, int& result
 void coordinador(int v[], bool& noCargado, bool acabado[]) {
 
     
-    ifstream f("datos.txt"); 
+    ifstream f("data_2.txt"); 
     if(f.is_open()) {
         int j=0;
         while (!f.eof()) {
